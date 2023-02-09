@@ -7,22 +7,12 @@ export default function Home() {
   const [result, setResult] = useState();
   const [loading, setLoading] = useState(false);
 
-  // async function handleSubmit(event) {
-  //   setLoading(true);
-  //   // console.log(loading);
-
-  //   await new Promise((resolve) =>
-  //     setTimeout(() => {
-  //       resolve();
-  //     }, 5000)
-  //   );
-
-  //   setLoading(false);
-  //   // console.log(loading);
-  // }
-
   async function onSubmit(event) {
     event.preventDefault();
+    // document.getElementById("submitInput").addEventListener("click", function(event){
+    //   event.preventDefault();
+    //   console.log(event);
+    // });
     setLoading(true);
     const headers = {
       'Content-Type': 'application/json',
@@ -38,25 +28,23 @@ export default function Home() {
       });
 
       const data = await response.json();
-      if (response.status !== 200) {
-        throw data.error || new Error(`Request failed with status ${response.status}`);
-      }
-      // console.log(loading);
 
-      // await new Promise((resolve) =>
-      //   setTimeout(() => {
-      //     resolve();
-      //   }, 3000)
-      // );
+      // if (response.status !== 200) {
+      //   throw data.error || new Error(`Request failed with status ${response.status}`);
+      // }
+
+
+      if (response.status !== 200) {
+          // console.warn(data.error);
+          alert(data.error.message);
+      }
 
       setLoading(false);
-
       setResult(data.result);
       setAnimalInput("");
     } catch (error) {
-      // Consider implementing your own error handling logic here
-      // console.error(error);
       alert(error.message);
+      setLoading(false);
     }
   }
 
@@ -79,7 +67,7 @@ export default function Home() {
             onChange={(e) => setAnimalInput(e.target.value)}
           />
           <input id="submitInput" type="submit" value="Generate names" disabled={loading}
-          onClick={(e) =>  onSubmit(e)} />
+          onClick={(e) => onSubmit(e)} />
         </form>
         <div className={styles.result}>{result}</div>
       </main>
