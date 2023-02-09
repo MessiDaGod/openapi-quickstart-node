@@ -9,27 +9,25 @@ export default async function (req, res) {
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
-        message: "OpenAI API key not configured, please follow instructions in README.md",
-      }
+        message:
+          "OpenAI API key not configured, please follow instructions in README.md",
+      },
     });
     return;
   }
 
-  const animal = req.body.animal || '';
-  if (animal.trim().length === 0) {
-    res.status(400).json({
-      error: {
-        message: "Please enter literally anything!",
-      }
-    });
-    return;
-  }
+  // const requestText = req.body.requestText || '';
+  // if (requestText.trim().length === 0) {
+  //   res.status(400).json({
+  //     error: {
+  //       message: "Please enter literally anything!",
+  //     }
+  //   });
+  //   return;
+  // }
 
   try {
     const completion = await openai.createCompletion({
-      // model: "text-davinci-003",
-      // prompt: generatePrompt(animal),
-      // temperature: 0.6,
       model: "text-davinci-003",
       prompt: generatePrompt(),
       temperature: 0.5,
@@ -46,15 +44,15 @@ export default async function (req, res) {
       if (error.response.status === 429) {
         res.status(429).json({
           error: {
-            message: 'Too many requests!',
-          }
+            message: "Too many requests!",
+          },
         });
       }
     } else {
       res.status(500).json({
         error: {
-          message: 'An error occurred during your request.',
-        }
+          message: "An error occurred during your request.",
+        },
       });
     }
   }
@@ -62,7 +60,10 @@ export default async function (req, res) {
 }
 
 function generatePrompt() {
-  return `Create an analogy for this phrase:
+  return `Write a restaurant review based on these notes:
 
-  Questions are arrows in that:`;
+Name: The Blue Wharf
+Lobster great, noisy, service polite, prices good
+
+Review:`;
 }
