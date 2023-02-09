@@ -5,11 +5,11 @@ import styles from "./index.module.css";
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [result, setResult] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   async function onSubmit(event) {
     event.preventDefault();
-    // setLoading(true);
+    setLoading(true);
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
@@ -39,6 +39,7 @@ export default function Home() {
     } catch (error) {
       alert(error.message);
       setLoading(false);
+      return;
     }
   }
 

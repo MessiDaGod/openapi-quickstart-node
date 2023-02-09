@@ -19,7 +19,7 @@ export default async function (req, res) {
   if (animal.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid animal",
+        message: "Please enter literally anything!",
       }
     });
     return;
@@ -32,10 +32,15 @@ export default async function (req, res) {
       temperature: 0.6,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
-  } catch(error) {
+  } catch (error) {
     if (error.response) {
-      console.log(error.response.status);
-      res.status(error.response.status).json(error.response.data);
+      if (error.response.status === 429) {
+        res.status(429).json({
+          error: {
+            message: 'Too many requests!',
+          }
+        });
+      }
     } else {
       res.status(500).json({
         error: {
@@ -44,6 +49,7 @@ export default async function (req, res) {
       });
     }
   }
+  // res.status(error.response.status).json(error.response.data);
 }
 
 function generatePrompt(animal) {
