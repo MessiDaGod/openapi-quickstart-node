@@ -66,6 +66,11 @@ export default async function (req, res) {
   // res.status(error.response.status).json(error.response.data);
 }
 
-export function generatePrompt() {
+function generatePrompt() {
+  return defaultValue;
+}
+
+export function thePrompts()
+{
   return defaultValue;
 }

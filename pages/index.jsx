@@ -2,13 +2,14 @@ import Head from "next/head";
 import React, { useState, useRef } from "react";
 import styles from "./index.module.css";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
-import generatePrompt from "./api/generate";
+import thePrompts from "./api/generate";
 
 export default function Home() {
   const [requestInput, setRequestInput] = useState(undefined);
   const [result, setResult] = useState();
   const [loading, setLoading] = useState(false);
-  const [dropdown, setDropdown] = useState("requestText");
+  const [dropdown, setDropdown] = useState();
+  const [currentPrompt, setCurrentPrompt] = useState("");
 
   const monacoRef = useRef(null);
 
@@ -24,15 +25,22 @@ export default function Home() {
 
   function handleEditorDidMount(editor, monaco) {
     monacoRef.current = editor;
-    // monacoRef.current.setValue(JSON.stringify(defaultValue));
+    monacoRef.current.setValue(JSON.stringify(currentPrompt));
+  }
+
+  function setRequestInputValue() {
+    console.log(document.getElementById("options").value);
+    return setRequestInput(document.getElementById("options").value);
   }
 
   async function onGetInput(event) {
     event.preventDefault();
+
+    setRequestInputValue(document.getElementById("options").value);
     setLoading(true);
 
     try {
-      setRequestInput("");
+      // setRequestInput(currentPrompt);
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: headers,
