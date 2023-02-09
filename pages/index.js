@@ -31,15 +31,15 @@ export default function Home() {
 
       if (response.status !== 200) {
         alert(data.error.message);
+        throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
       setLoading(false);
       setResult(data.result);
       setAnimalInput("");
     } catch (error) {
-      alert(error.message);
+//       alert(error.message);
       setLoading(false);
-      return;
     }
   }
 
