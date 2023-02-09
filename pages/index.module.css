@@ -36,7 +36,7 @@
   color: #202123;
   margin: 16px 0 40px;
 }
-.main form {
+.main form:not(.hide) {
   display: flex;
   flex-direction: column;
   width: 320px;
@@ -75,4 +75,12 @@
 .main .result {
   font-weight: bold;
   margin-top: 40px;
+}
+
+input#submitInput {
+  width: 50%;
+}
+
+.hide {
+  display: none !important;
 }
