@@ -4,17 +4,13 @@ import styles from "./index.module.css";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 
 export default function Home() {
-  const [requestInput, setRequestInput] = useState("");
+  const [requestInput, setRequestInput] = useState(undefined);
   const [result, setResult] = useState();
   const [loading, setLoading] = useState(false);
   const [dropdown, setDropdown] = useState("requestText");
 
   const monacoRef = useRef(null);
 
-  const defaultValue = {
-    Value:
-      "Write a restaurant review based on these notes: Name: The Blue Wharf Lobster great, noisy service polite, prices good. Review:",
-  };
   const headers = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
@@ -22,26 +18,20 @@ export default function Home() {
   };
 
   function handleEditorWillMount(monaco) {
-    // here is the monaco instance
-    // do something before editor is mounted
     monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
   }
 
   function handleEditorDidMount(editor, monaco) {
-    //     const defaultValue = `{
-    //     \"Value\": \"Write a restaurant review based on these notes: Name: The Blue Wharf Lobster great, noisy service polite, prices good. Review:\"
-    // }`;
     monacoRef.current = editor;
-    monacoRef.current.setValue(JSON.stringify(defaultValue));
+    // monacoRef.current.setValue(JSON.stringify(defaultValue));
   }
 
   async function onGetInput(event) {
     event.preventDefault();
-    // let value = JSON.stringify(monacoRef.current.getValue());
-    // console.log(value["Value"]);
     setLoading(true);
 
     try {
+      setRequestInput("");
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: headers,
@@ -50,6 +40,7 @@ export default function Home() {
 
       const data = await response.json();
 
+      monacoRef.current.setValue(JSON.stringify(data));
       // if (response.status !== 200) {
       //   throw data.error || new Error(`Request failed with status ${response.status}`);
       // }
@@ -63,8 +54,7 @@ export default function Home() {
       }
 
       setLoading(false);
-      setResult(data.result);
-      setRequestInput("");
+      // setResult(data.result);
     } catch (error) {
       // alert(error.message);
       setLoading(false);
@@ -107,8 +97,9 @@ export default function Home() {
 
   async function onDropdownChange(e) {
     e.preventDefault();
+    console.log()
     document.getElementById("inputField");
-    if (e.target.valu === "analogy")
+    if (e.target.value === "review")
       document.getElementById("inputField").style.display = "none";
   }
 
@@ -121,6 +112,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h3>OpenAPI Testing</h3>
+
         <label htmlFor="options">Choose a Prompt:</label>
         <br />
 
@@ -129,8 +121,8 @@ export default function Home() {
           id="options"
           onChange={(e) => onDropdownChange(e)}
         >
-          <option value="analogy">Analogy</option>
-          <option value="requestText">Animal Name</option>
+          <option value="review">Restaurant Review</option>
+          <option value="table">Generate Table</option>
         </select>
         <br />
         <form onSubmit={onSubmit}>
@@ -145,14 +137,14 @@ export default function Home() {
           {/* <input
             id="submitInput"
             type="submit"
-            value="Submit"
+            value="Submit Prompt"
             disabled={loading}
             onClick={(e) => onSubmit(e)}
           /><br /> */}
           <input
             id="getInput"
             type="submit"
-            value="Submit Prompt"
+            value="Get Prompt"
             disabled={loading}
             onClick={(e) => onGetInput(e)}
           />
@@ -164,7 +156,7 @@ export default function Home() {
           beforeMount={handleEditorWillMount}
           onMount={handleEditorDidMount}
         />
-        <div className={styles.result}>{result}</div>
+        {/* <div className={styles.result}>{result}</div> */}
       </main>
     </div>
   );
