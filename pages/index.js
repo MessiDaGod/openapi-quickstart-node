@@ -5,15 +5,11 @@ import styles from "./index.module.css";
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [result, setResult] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function onSubmit(event) {
     event.preventDefault();
-    // document.getElementById("submitInput").addEventListener("click", function(event){
-    //   event.preventDefault();
-    //   console.log(event);
-    // });
-    setLoading(true);
+    // setLoading(true);
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
@@ -33,10 +29,8 @@ export default function Home() {
       //   throw data.error || new Error(`Request failed with status ${response.status}`);
       // }
 
-
       if (response.status !== 200) {
-          // console.warn(data.error);
-          alert(data.error.message);
+        alert(data.error.message);
       }
 
       setLoading(false);
@@ -46,6 +40,15 @@ export default function Home() {
       alert(error.message);
       setLoading(false);
     }
+  }
+
+  async function onInputChange(event) {
+    document.getElementById("inputField").addEventListener("onchange", function (event) {
+      event.preventDefault();
+      if (animalInput.trim().length > 0) {
+        setLoading(false);
+      }
+    });
   }
 
   return (
@@ -59,7 +62,7 @@ export default function Home() {
         <img src="/dog.png" className={styles.icon} />
         <h3>Name my pet</h3>
         <form onSubmit={onSubmit}>
-          <input
+          <input id="inputField"
             type="text"
             name="animal"
             placeholder="Enter an animal"
@@ -67,7 +70,7 @@ export default function Home() {
             onChange={(e) => setAnimalInput(e.target.value)}
           />
           <input id="submitInput" type="submit" value="Generate names" disabled={loading}
-          onClick={(e) => onSubmit(e)} />
+            onClick={(e) => onSubmit(e)} />
         </form>
         <div className={styles.result}>{result}</div>
       </main>
