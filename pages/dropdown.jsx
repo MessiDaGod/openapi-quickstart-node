@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Dropdown = () => {
-  const [selectedItem, setSelectedItem] = useState("Select an item");
+  const [selectedItem, setSelectedItem] = useState("Select Connection");
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleMouseEnter = () => setShowDropdown(true);
@@ -12,18 +12,13 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="dropdown">
-      <button
-        className="btn btn-secondary dropdown-toggle"
-        type="button"
-        style={{ position: "relative", display: "inline-block", backgroundColor: "#0d1117", color: "white" }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {selectedOption || "Select Connection"}
-      </button>
+    <div
+      className={"dropdown rz-dropdown"}
+      style={{ position: "relative", display: "inline-block" }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div>{selectedItem}</div>
+      <button>{selectedItem}</button>
       {showDropdown && (
         <ul
           style={{
@@ -35,7 +30,6 @@ const Dropdown = () => {
             padding: 0,
             margin: 0,
             zIndex: 1,
-            backgroundColor: "#0d1117", color: "white"
           }}
         >
           <li onClick={() => handleItemClick("Item 1")}>Item 1</li>

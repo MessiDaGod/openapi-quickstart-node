@@ -20,9 +20,19 @@ const ConnectionDropdown = ({ connectionStrings }) => {
         {selectedOption || "Select Connection"}
       </button>
       {isOpen && (
-        <ul className="dropdown-menu">
+        <ul style={{
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              backgroundColor: "white",
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              zIndex: 1,
+              backgroundColor: "#0d1117", color: "white"
+            }}>
           {Object.entries(connectionStrings).map(([key, value], index) => (
-            <li key={index} onClick={() => handleSelect(key)}>
+            <li key={index} onClick={() => handleItemClick(key)}>
               {key}
             </li>
           ))}

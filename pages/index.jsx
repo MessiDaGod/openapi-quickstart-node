@@ -137,7 +137,6 @@ export default function Home() {
         </form>
         <br />
         <Dropdown /><br />
-        <ConnectionDropdown /><br />
         <Editor
           height="20vh"
           defaultLanguage="json"
