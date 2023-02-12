@@ -4,6 +4,8 @@ const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
+  const className = "dropdown-menu";
+
   const toggleDropdown = () => setIsOpen(!isOpen);
   const selectItem = item => () => {
     setSelectedItem(item);
@@ -16,7 +18,7 @@ const Dropdown = () => {
       onMouseLeave={toggleDropdown}
       style={{ position: 'relative' }}
     >
-      <button>{selectedItem || 'Select an item'}</button>
+      <button className={className}>{selectedItem || 'Select an item'}</button>
       {isOpen && (
         <ul style={{ position: 'absolute', top: '100%' }}>
           <li onClick={selectItem('Item 1')}>Item 1</li>
