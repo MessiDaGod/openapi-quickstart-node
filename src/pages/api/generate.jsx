@@ -22,16 +22,6 @@ export default async function (req, res) {
     return;
   }
 
-  // const requestText = req.body.requestText || '';
-  // if (requestText.trim().length === 0) {
-  //   res.status(400).json({
-  //     error: {
-  //       message: "Please enter literally anything!",
-  //     }
-  //   });
-  //   return;
-  // }
-
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",

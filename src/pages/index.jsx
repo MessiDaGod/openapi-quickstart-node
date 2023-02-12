@@ -6,8 +6,8 @@ import thePrompts from "./api/generate";
 import Dropdown from "./dropdown";
 import CodeEditor from "./codeEditor";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SwaggerUI from "swagger-ui-react";
-import "swagger-ui-react/swagger-ui.css";
+// import SwaggerUI from "swagger-ui-react";
+// import "swagger-ui-react/swagger-ui.css";
 import TopBar from "./TopBar";
 import SideMenu from "./SideMenu";
 // import { openapi } from "./api/openapi.json";
@@ -16,6 +16,7 @@ import OpenApi from "./openApi";
 
 
 export default function Home() {
+
   const [requestInput, setRequestInput] = useState(undefined);
   const [result, setResult] = useState();
   const [loading, setLoading] = useState(false);
@@ -57,11 +58,6 @@ export default function Home() {
         <Switch>
           <Route exact path="/" component={() => <OpenApi />} />
           <Route exact path="/about" component={() => <h1>About</h1>} />
-          <Route
-            exact
-            path="/api-reference"
-            component={() => <SwaggerUI spec={openapi} />}
-          />
           <Route
             exact
             path="/get-started"
