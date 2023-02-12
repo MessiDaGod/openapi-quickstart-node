@@ -6,26 +6,8 @@ import thePrompts from "./api/generate";
 import Dropdown from "./dropdown";
 import CodeEditor from "./codeEditor";
 
-export default function Home() {
-  const [requestInput, setRequestInput] = useState(undefined);
-  const [result, setResult] = useState();
-  const [loading, setLoading] = useState(false);
-  const [dropdown, setDropdown] = useState();
 
-  const monacoRef = useRef(null);
-
-  const headers = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
-  };
-
-  function setRequestInputValue() {
-    console.log(document.getElementById("options").value);
-    return setRequestInput(document.getElementById("options").value);
-  }
-
-  async function onGetInput(event) {
+async function onGetInput(event) {
     event.preventDefault();
 
     setRequestInputValue(document.getElementById("options").value);
@@ -62,7 +44,7 @@ export default function Home() {
     }
   }
 
-  async function onSubmit(event) {
+async function onSubmit(event) {
     event.preventDefault();
     setLoading(true);
 
@@ -96,39 +78,28 @@ export default function Home() {
     }
   }
 
-  async function onDropdownChange(e) {
-    e.preventDefault();
-    console.log()
-    document.getElementById("inputField");
-    if (e.target.value === "review")
-      document.getElementById("inputField").style.display = "none";
-  }
 
-  return (
-    <div>
-      <Head>
-        <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
-      </Head>
-
-      <main className={styles.main}>
+function OpenApi() {
+    return (
+        <main className={styles.main}>
         <h3>OpenAPI Testing</h3>
 
         <label htmlFor="options">Choose a Prompt:</label>
         <br />
         <form onSubmit={onSubmit}>
-          <input
+            <input
             id="getInput"
             type="submit"
             value="Get Prompt"
             disabled={loading}
             onClick={(e) => onGetInput(e)}
-          />
+            />
         </form>
         <br />
         <Dropdown /><br />
         <CodeEditor />
-      </main>
-    </div>
-  );
-}
+        </main>
+    );
+  }
+
+  export default OpenApi;
