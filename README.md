@@ -33,7 +33,7 @@ This is an example pet name generator app used in the OpenAI API [quickstart tut
 6. Add your [API key](https://beta.openai.com/account/api-keys) to the newly created `.env` file
 
 7. Run the app
-*** If you are unable to run the [run.sh](https://beta.openai.com/account/api-keys) file, execute this code to take ownership of the file:
+7.1. If you are unable to run the [run.sh](https://beta.openai.com/account/api-keys) file, execute this code to take ownership of the file:
 
    ```bash
    chmod +x ./run.sh
