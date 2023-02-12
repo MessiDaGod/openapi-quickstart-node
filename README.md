@@ -34,7 +34,7 @@ This is an example pet name generator app used in the OpenAI API [quickstart tut
 
 7. Run the app
 
-   7.1. If you are unable to run the [run.sh](https://beta.openai.com/account/api-keys) file, execute this code to take ownership of the file:
+   7.1. If you are unable to run the [run.sh](https://github.com/MessiDaGod/openapi-quickstart-node/blob/main/run.sh) file, execute this code to take ownership of the file:
 
    ```bash
    chmod +x ./run.sh
