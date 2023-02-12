@@ -38,7 +38,13 @@ This is an example pet name generator app used in the OpenAI API [quickstart tut
    ```bash
    chmod +x ./run.sh
    ```
-
+   
+   ```bash
+   ./run.sh
+   ```
+   
+   OR
+   
    ```bash
    npm run dev
    ```
