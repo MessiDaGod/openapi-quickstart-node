@@ -4,14 +4,13 @@ import styles from "./index.module.css";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import thePrompts from "./api/generate";
 import Dropdown from "./dropdown";
-import ConnectionDropdown from "./connectionDropdown";
+import CodeEditor from "./codeEditor";
 
 export default function Home() {
   const [requestInput, setRequestInput] = useState(undefined);
   const [result, setResult] = useState();
   const [loading, setLoading] = useState(false);
   const [dropdown, setDropdown] = useState();
-  const [currentPrompt, setCurrentPrompt] = useState("");
 
   const monacoRef = useRef(null);
 
@@ -21,14 +20,14 @@ export default function Home() {
     "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
   };
 
-  function handleEditorWillMount(monaco) {
-    monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
-  }
+  // function handleEditorWillMount(monaco) {
+  //   monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
+  // }
 
-  function handleEditorDidMount(editor, monaco) {
-    monacoRef.current = editor;
-    monacoRef.current.setValue(JSON.stringify(currentPrompt));
-  }
+  // function handleEditorDidMount(editor, monaco) {
+  //   monacoRef.current = editor;
+  //   monacoRef.current.setValue(JSON.stringify(currentPrompt));
+  // }
 
   function setRequestInputValue() {
     console.log(document.getElementById("options").value);
@@ -137,13 +136,7 @@ export default function Home() {
         </form>
         <br />
         <Dropdown /><br />
-        <Editor
-          height="20vh"
-          defaultLanguage="json"
-          beforeMount={handleEditorWillMount}
-          onMount={handleEditorDidMount}
-        />
-        {/* <div className={styles.result}>{result}</div> */}
+        <CodeEditor />
       </main>
     </div>
   );

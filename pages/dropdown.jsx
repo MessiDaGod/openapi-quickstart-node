@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Dropdown =  ({ connectionStrings }) => {
+const Dropdown =  ({ jsonFileName }) => {
   const [selectedItem, setSelectedItem] = useState("Select Connection");
   const [showDropdown, setShowDropdown] = useState(false);
   const [myConnectionStrings, setConnectionStrings] = useState({});
@@ -38,11 +38,13 @@ const Dropdown =  ({ connectionStrings }) => {
             position: "absolute",
             top: "100%",
             left: 0,
-            backgroundColor: "white",
+            backgroundColor: "#0d1117",
+            color: "white",
             listStyle: "none",
             padding: 0,
             margin: 0,
             zIndex: 1,
+            cursor: "pointer",
           }}
         >
           {Object.entries(myConnectionStrings).map(([key, value], index) => (
