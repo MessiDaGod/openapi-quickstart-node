@@ -20,15 +20,6 @@ export default function Home() {
     "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
   };
 
-  // function handleEditorWillMount(monaco) {
-  //   monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
-  // }
-
-  // function handleEditorDidMount(editor, monaco) {
-  //   monacoRef.current = editor;
-  //   monacoRef.current.setValue(JSON.stringify(currentPrompt));
-  // }
-
   function setRequestInputValue() {
     console.log(document.getElementById("options").value);
     return setRequestInput(document.getElementById("options").value);
