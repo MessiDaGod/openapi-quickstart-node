@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Dropdown = () => {
+const Dropdown =  ({ connectionStrings }) => {
   const [selectedItem, setSelectedItem] = useState("Select Connection");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [myConnectionStrings, setConnectionStrings] = useState({});
+
+  useEffect(() => {
+    // Fetch the JSON data from an API or a local file
+    fetch('/data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        // Get the ConnectionStrings object from the JSON data
+        const { ConnectionStrings } = data;
+        setConnectionStrings(ConnectionStrings);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleMouseEnter = () => setShowDropdown(true);
   const handleMouseLeave = () => setShowDropdown(false);
@@ -32,9 +45,12 @@ const Dropdown = () => {
             zIndex: 1,
           }}
         >
-          <li onClick={() => handleItemClick("Item 1")}>Item 1</li>
-          <li onClick={() => handleItemClick("Item 2")}>Item 2</li>
-          <li onClick={() => handleItemClick("Item 3")}>Item 3</li>
+          {Object.entries(myConnectionStrings).map(([key, value], index) => (
+            <li key={index} onClick={() => handleItemClick(key)}>
+              {key}
+            </li>
+          ))}
+
         </ul>
       )}
     </div>
