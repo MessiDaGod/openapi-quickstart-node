@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import thePrompts from "./api/generate";
 import Dropdown from "./dropdown";
+import ConnectionDropdown from "./connectionDropdown";
 
 export default function Home() {
   const [requestInput, setRequestInput] = useState(undefined);
@@ -125,32 +126,7 @@ export default function Home() {
 
         <label htmlFor="options">Choose a Prompt:</label>
         <br />
-
-        <select
-          name="options"
-          id="options"
-          onChange={(e) => onDropdownChange(e)}
-        >
-          <option value="review">Restaurant Review</option>
-          <option value="table">Generate Table</option>
-        </select>
-        <br />
         <form onSubmit={onSubmit}>
-          {/* <input id="inputField"
-            className={"hide"}
-            type="text"
-            name="requestText"
-            placeholder="Enter an requestText"
-            value={requestInput}
-            onChange={(e) => setRequestInput(e.target.value)}
-          /> */}
-          {/* <input
-            id="submitInput"
-            type="submit"
-            value="Submit Prompt"
-            disabled={loading}
-            onClick={(e) => onSubmit(e)}
-          /><br /> */}
           <input
             id="getInput"
             type="submit"
@@ -161,6 +137,7 @@ export default function Home() {
         </form>
         <br />
         <Dropdown /><br />
+        <ConnectionDropdown /><br />
         <Editor
           height="20vh"
           defaultLanguage="json"

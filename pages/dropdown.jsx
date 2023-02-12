@@ -12,11 +12,16 @@ const Dropdown = () => {
   };
 
   return (
-    <div
-      className={"dropdown rz-dropdown"}
-      style={{ position: "relative", display: "inline-block" }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+    <div className="dropdown">
+      <button
+        className="btn btn-secondary dropdown-toggle"
+        type="button"
+        style={{ position: "relative", display: "inline-block", backgroundColor: "#0d1117", color: "white" }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {selectedOption || "Select Connection"}
+      </button>
     >
       <div>{selectedItem}</div>
       {showDropdown && (
@@ -30,6 +35,7 @@ const Dropdown = () => {
             padding: 0,
             margin: 0,
             zIndex: 1,
+            backgroundColor: "#0d1117", color: "white"
           }}
         >
           <li onClick={() => handleItemClick("Item 1")}>Item 1</li>
