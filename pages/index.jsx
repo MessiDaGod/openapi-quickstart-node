@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import styles from "./index.module.css";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import thePrompts from "./api/generate";
+import Dropdown from "./dropdown";
 
 export default function Home() {
   const [requestInput, setRequestInput] = useState(undefined);
@@ -159,6 +160,7 @@ export default function Home() {
           />
         </form>
         <br />
+        <Dropdown /><br />
         <Editor
           height="20vh"
           defaultLanguage="json"
