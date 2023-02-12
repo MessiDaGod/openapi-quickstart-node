@@ -104,3 +104,29 @@ input#submitInput {
   border: 1px solid rgba(0,0,0,0.15);
   border-radius: 0.25rem;
 }
+
+.rz-dropdown, .rz-multiselect {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    position: sticky;
+    background-color: #040303;
+}
+
+.rz-textbox, .rz-textarea, .mask, .rz-dropdown, .rz-multiselect, .rz-calendar .rz-inputtext, .rz-spinner, .rz-lookup-search input, .rz-colorpicker {
+    /* height: var(--rz-input-height); */
+    line-height: var(--rz-input-line-height);
+    color: var(--rz-input-value-color);
+    font-size: var(--rz-input-font-size);
+    transition: var(--rz-input-transition);
+    outline: none;
+}
+.rz-textbox, .rz-textarea, .mask, .rz-dropdown, .rz-multiselect, .rz-calendar .rz-inputtext, .rz-spinner, .rz-lookup-search input, .rz-colorpicker {
+    border: var(--rz-input-border);
+    border-radius: var(--rz-input-border-radius);
+    box-shadow: var(--rz-input-shadow);
+    background-color: var(--rz-input-background-color);
+}
+.rz-textbox, .rz-textarea, .mask, .rz-dropdown, .rz-multiselect, .rz-calendar .rz-inputtext, .rz-spinner, .rz-lookup-search input, .rz-colorpicker {
+    padding: var(--rz-input-padding);
+}

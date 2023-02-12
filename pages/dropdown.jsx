@@ -1,29 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState("Select an item");
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  const className = "dropdown-menu";
-
-  const toggleDropdown = () => setIsOpen(!isOpen);
-  const selectItem = item => () => {
+  const handleMouseEnter = () => setShowDropdown(true);
+  const handleMouseLeave = () => setShowDropdown(false);
+  const handleItemClick = (item) => {
     setSelectedItem(item);
-    setIsOpen(false);
+    setShowDropdown(false);
   };
 
   return (
     <div
-      onMouseEnter={toggleDropdown}
-      onMouseLeave={toggleDropdown}
-      style={{ position: 'relative' }}
+      className={"dropdown rz-dropdown"}
+      style={{ position: "relative", display: "inline-block" }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <button className={className}>{selectedItem || 'Select an item'}</button>
-      {isOpen && (
-        <ul style={{ position: 'absolute', top: '100%' }}>
-          <li onClick={selectItem('Item 1')}>Item 1</li>
-          <li onClick={selectItem('Item 2')}>Item 2</li>
-          <li onClick={selectItem('Item 3')}>Item 3</li>
+      <div>{selectedItem}</div>
+      {showDropdown && (
+        <ul
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            backgroundColor: "white",
+            listStyle: "none",
+            padding: 0,
+            margin: 0,
+            zIndex: 1,
+          }}
+        >
+          <li onClick={() => handleItemClick("Item 1")}>Item 1</li>
+          <li onClick={() => handleItemClick("Item 2")}>Item 2</li>
+          <li onClick={() => handleItemClick("Item 3")}>Item 3</li>
         </ul>
       )}
     </div>
