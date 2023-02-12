@@ -11,24 +11,24 @@ This is an example pet name generator app used in the OpenAI API [quickstart tut
 3. Navigate into the project directory
 
    ```bash
-   $ cd openai-quickstart-node
+   cd openai-quickstart-node
    ```
 
 4. Install the requirements
 
    ```bash
-   $ npm install
+   npm install
    ```
 
 5. Make a copy of the example environment variables file
 
    On Linux systems: 
    ```bash
-   $ cp .env.example .env
+   cp .env.example .env
    ```
    On Windows:
    ```powershell
-   $ copy .env.example .env
+   copy .env.example .env
    ```
 6. Add your [API key](https://beta.openai.com/account/api-keys) to the newly created `.env` file
 
@@ -36,12 +36,11 @@ This is an example pet name generator app used in the OpenAI API [quickstart tut
 *** If you are unable to run the [run.sh](https://beta.openai.com/account/api-keys) file, execute this code to take ownership of the file:
 
    ```bash
-   $ chmod +x ./run.sh
+   chmod +x ./run.sh
    ```
 
    ```bash
-   $ npm run dev
-   $ ./run.sh
+   npm run dev
    ```
 
 You should now be able to access the app at [http://localhost:3000](http://localhost:3000)! For the full context behind this example app, check out the [tutorial](https://beta.openai.com/docs/quickstart).
