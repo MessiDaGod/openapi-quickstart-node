@@ -6,8 +6,8 @@ import thePrompts from "./api/generate";
 import Dropdown from "./dropdown";
 import CodeEditor from "./codeEditor";
 
-
-async function onGetInput(event) {
+function OpenApi() {
+  async function onGetInput(event) {
     event.preventDefault();
 
     setRequestInputValue(document.getElementById("options").value);
@@ -44,7 +44,7 @@ async function onGetInput(event) {
     }
   }
 
-async function onSubmit(event) {
+  async function onSubmit(event) {
     event.preventDefault();
     setLoading(true);
 
@@ -78,28 +78,29 @@ async function onSubmit(event) {
     }
   }
 
+  const [loading, setLoading] = useState(false);
 
-function OpenApi() {
-    return (
-        <main className={styles.main}>
-        <h3>OpenAPI Testing</h3>
+  return (
+    <main className={styles.main}>
+      <h3>OpenAPI Testing</h3>
 
-        <label htmlFor="options">Choose a Prompt:</label>
-        <br />
-        <form onSubmit={onSubmit}>
-            <input
-            id="getInput"
-            type="submit"
-            value="Get Prompt"
-            disabled={loading}
-            onClick={(e) => onGetInput(e)}
-            />
-        </form>
-        <br />
-        <Dropdown /><br />
-        <CodeEditor />
-        </main>
-    );
-  }
+      <label htmlFor="options">Choose a Prompt:</label>
+      <br />
+      <form onSubmit={onSubmit}>
+        <input
+          id="getInput"
+          type="submit"
+          value="Get Prompt"
+          disabled={loading}
+          onClick={(e) => onGetInput(e)}
+        />
+      </form>
+      <br />
+      <Dropdown />
+      <br />
+      <CodeEditor />
+    </main>
+  );
+}
 
-  export default OpenApi;
+export default OpenApi;
