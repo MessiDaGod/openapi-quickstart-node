@@ -5,11 +5,7 @@ import Dropdown from "./dropdown";
 const TopBar = () => {
   return (
     <nav className={styles.TopBar}>
-      <ul>
-        <li>
-          <Dropdown jsonFileName="data" />
-        </li>
-      </ul>
+      <Dropdown jsonFileName="data" />
     </nav>
   );
 };

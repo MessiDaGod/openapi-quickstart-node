@@ -1,13 +1,13 @@
 .TopBar {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
     background-color: #333;
     padding: 1rem;
   }
 
-  .TopBar ul {
-    display: flex;
+  .TopBar ul:not(.dropdown) {
+    /* display: flex; */
     list-style: none;
     margin: 0;
     padding: 0;
