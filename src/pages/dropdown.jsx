@@ -72,7 +72,7 @@ const Dropdown =  ({ jsonFileName }) => {
               onClick={() => handleItemClick(key)}
               onMouseEnter={() => setHoveredItem(index)}
               onMouseLeave={() => setHoveredItem(null)}
-              className={hoveredItem === index ? "hovered" : ""}
+              className={hoveredItem === index ? "dropdown-item hovered" : "dropdown-item"}
             >
               {key}
             </li>
