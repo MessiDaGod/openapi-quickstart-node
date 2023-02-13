@@ -1,6 +1,6 @@
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import React, { useState, useRef } from "react";
-import styles from "./index.module.css";
+import styles from "./codeEditor.module.css";
 
 const CodeEditor = () => {
   const monacoRef = useRef(null);
