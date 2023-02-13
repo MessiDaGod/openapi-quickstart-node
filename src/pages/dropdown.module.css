@@ -38,7 +38,7 @@
 }
 .btn-101 {
   --thickness: 0.3rem;
-  --roundness: 1.2rem;
+  /* --roundness: 1.2rem; */
   --color: #eff6ff;
   --opacity: 0.6;
   -webkit-backdrop-filter: blur(100px);
@@ -46,7 +46,7 @@
   background: none;
   background: hsla(0, 0%, 100%, 0.2);
   border: none;
-  border-radius: var(--roundness);
+  /* border-radius: var(--roundness); */
   color: var(--color);
   cursor: pointer;
   display: block;
@@ -65,7 +65,7 @@
   background: hsla(0, 0%, 100%, 0.1);
 }
 .btn-101 svg {
-  border-radius: var(--roundness);
+  /* border-radius: var(--roundness); */
   display: block;
   filter: url(#glow);
   height: 100%;
@@ -78,7 +78,6 @@
   fill: none;
   stroke: var(--color);
   stroke-width: var(--thickness);
-  rx: var(--roundness);
   stroke-linejoin: round;
   stroke-dasharray: 185%;
   stroke-dashoffset: 80;

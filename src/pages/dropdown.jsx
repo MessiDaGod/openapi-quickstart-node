@@ -56,7 +56,7 @@ const Dropdown =  ({ jsonFileName }) => {
     >
       <Button label="Select Connection">{selectedItem}</Button>
       {showDropdown && (
-        <ul className={styles.ul}>
+        <ul className={styles.dropdown}>
           {Object.entries(myConnectionStrings).map(([key, value], index) => (
             <li
               key={index}
