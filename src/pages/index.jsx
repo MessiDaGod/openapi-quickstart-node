@@ -23,19 +23,6 @@ export default function Home() {
 
   // const monacoRef = useRef(null);
 
-  const headers = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
-  };
-
-  function setRequestInputValue() {
-    console.log(document.getElementById("options").value);
-    return setRequestInput(document.getElementById("options").value);
-  }
-
-
-
   async function onDropdownChange(e) {
     e.preventDefault();
     console.log();
@@ -50,22 +37,7 @@ export default function Home() {
         <title>OpenAI Quickstart</title>
         <link rel="icon" href="/dog.png" />
       </Head>
-      {/* <TopBar items={menu.topBar} />
-      <SideMenu items={menu.sideMenu} /> */}
       <OpenApi />
-      {/* <Router>
-        <TopBar items={menu.topBar} />
-        <SideMenu items={menu.sideMenu} />
-        <Switch>
-          <Route exact path="/" component={() => <OpenApi />} />
-          <Route exact path="/about" component={() => <h1>About</h1>} />
-          <Route
-            exact
-            path="/get-started"
-            component={() => <h1>Get Started</h1>}
-          />
-        </Switch>
-      </Router> */}
     </div>
   );
 }

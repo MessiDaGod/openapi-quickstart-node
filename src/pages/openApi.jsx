@@ -7,6 +7,20 @@ import Dropdown from "./dropdown";
 import CodeEditor from "./codeEditor";
 
 function OpenApi() {
+
+  const [requestInput, setRequestInput] = useState(undefined);
+  const [result, setResult] = useState();
+  const [loading, setLoading] = useState(false);
+  const [dropdown, setDropdown] = useState();
+  const [currentPrompt, setCurrentPrompt] = useState("");
+
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
+  };
+
+
   async function onGetInput(event) {
     event.preventDefault();
 
@@ -78,19 +92,23 @@ function OpenApi() {
     }
   }
 
-  const [loading, setLoading] = useState(false);
+  async function onDropdownChange(e) {
+    e.preventDefault();
+    console.log()
+    document.getElementById("inputField");
+    if (e.target.value === "review")
+      document.getElementById("inputField").style.display = "none";
+  }
+
 
   return (
     <main className={styles.main}>
-      <h3>OpenAPI Testing</h3>
-
-      <label htmlFor="options">Choose a Prompt:</label>
-      <br />
+      <h3>OpenAPI ChatGPT</h3>
       <form onSubmit={onSubmit}>
         <input
           id="getInput"
           type="submit"
-          value="Get Prompt"
+          value="Submit to ChatGPT"
           disabled={loading}
           onClick={(e) => onGetInput(e)}
         />

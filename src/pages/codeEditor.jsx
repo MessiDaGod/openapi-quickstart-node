@@ -4,8 +4,8 @@ import styles from "./index.module.css";
 
 const CodeEditor = () => {
   const monacoRef = useRef(null);
-  const [currentPrompt, setCurrentPrompt] = useState("");
   const defaultValue="\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+  const [currentPrompt, setCurrentPrompt] = useState(defaultValue);
 
   function handleEditorWillMount(monaco) {
     monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
@@ -13,13 +13,14 @@ const CodeEditor = () => {
 
   function handleEditorDidMount(editor, monaco) {
     monacoRef.current = editor;
-    monacoRef.current.setValue(JSON.stringify(currentPrompt));
+    monacoRef.current.setValue(currentPrompt);
   }
 
   return (
     <Editor
       height="20vh"
       defaultLanguage="txt"
+      automaticLayout={true}
       defaultValue={defaultValue}
       beforeMount={handleEditorWillMount}
       onMount={handleEditorDidMount}
