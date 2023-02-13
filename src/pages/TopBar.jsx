@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './TopBar.module.css';
-import Dropdown from './Dropdown';
+import Dropdown from './dropdown';
 
-const TopBar = ({ jsonFileName }) => {
+const TopBar = () => {
   return (
     <div className={styles.topbar}>
       <div className={styles.logo}>
@@ -15,7 +15,7 @@ const TopBar = ({ jsonFileName }) => {
         <a href="/">Features</a>
         <a href="/">Pricing</a>
       </div>
-      <Dropdown jsonFileName={jsonFileName} />
+      <Dropdown jsonFileName="data" />
     </div>
   );
 };
