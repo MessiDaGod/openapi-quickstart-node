@@ -1,16 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
+import styles from "./TopBar.module.css";
+import Dropdown from "./dropdown";
 
-function TopBar({ items }) {
+const TopBar = () => {
   return (
-    <nav className="top-bar">
-      {items.map((item) => (
-        <Link key={item.id} to={item.url}>
-          {item.label}
-        </Link>
-      ))}
+    <nav className={styles.TopBar}>
+      <ul>
+        <li>
+          <Dropdown jsonFileName="data" />
+        </li>
+      </ul>
     </nav>
   );
-}
+};
 
 export default TopBar;

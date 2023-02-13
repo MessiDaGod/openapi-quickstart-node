@@ -118,7 +118,7 @@ function OpenApi() {
 
   return (
     <main className={styles.main}>
-      <h3>OpenAPI ChatGPT</h3>
+      <h1>ChatGPT</h1>
       <form onSubmit={onSubmit}>
         <input
           id="getInput"
@@ -128,9 +128,6 @@ function OpenApi() {
           onClick={(e) => onGetInput(e)}
         />
       </form>
-      <br />
-      <Dropdown jsonFileName="data" />
-      <br />
       <CodeEditor onExecute={() => executeCode(code)} />
     </main>
   );

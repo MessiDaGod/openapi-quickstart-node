@@ -5,14 +5,9 @@ import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import thePrompts from "./api/generate";
 import Dropdown from "./dropdown";
 import CodeEditor from "./codeEditor";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import SwaggerUI from "swagger-ui-react";
-// import "swagger-ui-react/swagger-ui.css";
-// import TopBar from "./TopBar";
-// import SideMenu from "./SideMenu";
-// import { openapi } from "./api/openapi.json";
 import menu from "../../public/menu.json";
 import OpenApi from "./openApi";
+import TopBar from "./TopBar";
 
 
 export default function Home() {
@@ -45,6 +40,7 @@ export default function Home() {
         <title>OpenAI Quickstart</title>
         <link rel="icon" href="/dog.png" />
       </Head>
+      <TopBar />
       <OpenApi />
     </div>
   );
