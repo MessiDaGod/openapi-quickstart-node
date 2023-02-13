@@ -107,6 +107,7 @@
 }
 
 .dropdown {
+  margin-left: auto;
   display: block;
   position: absolute;
   background-color: var(--bg-color);
