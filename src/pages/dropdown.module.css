@@ -118,16 +118,19 @@
   z-index: 999;
   cursor: pointer;
   border: solid 1px #d42496;
+  width: 100%;
 }
 
 .dropdown-item {
   list-style: none;
   color: white;
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .dropdown-item.hovered {
-  background-color: blue;
+  background-color: rgb(1, 1, 98);
 }
