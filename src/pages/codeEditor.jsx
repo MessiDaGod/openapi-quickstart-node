@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 const CodeEditor = () => {
   const monacoRef = useRef(null);
   const defaultValue="\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+  const [code, setCode] = useState("");
   const [currentPrompt, setCurrentPrompt] = useState(defaultValue);
 
   function handleEditorWillMount(monaco) {
@@ -15,6 +16,11 @@ const CodeEditor = () => {
     monacoRef.current = editor;
     monacoRef.current.setValue(currentPrompt);
   }
+
+  const handleExecute = () => {
+    setCode(editorRef.current.getValue());
+  };
+
 
   return (
     <Editor

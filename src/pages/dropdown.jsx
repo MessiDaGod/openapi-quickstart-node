@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import styles from './dropdown.module.css';
 
 const Dropdown =  ({ jsonFileName }) => {
   const [selectedItem, setSelectedItem] = useState("Select Connection");
   const [showDropdown, setShowDropdown] = useState(false);
   const [myConnectionStrings, setConnectionStrings] = useState({});
+  const [itemEnter, setItemEnter] = useState(false);
+  const[itemLeave, setItemLeave] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
 
   useEffect(() => {
     // Fetch the JSON data from an API or a local file
@@ -20,9 +24,37 @@ const Dropdown =  ({ jsonFileName }) => {
   const handleMouseEnter = () => setShowDropdown(true);
   const handleMouseLeave = () => setShowDropdown(false);
   const handleItemClick = (item) => {
+    console.info(item + " selected");
     setSelectedItem(item);
     setShowDropdown(false);
   };
+
+  const handleItemMouseEnter = (index) => {
+    setItemEnter(index);
+    setItemLeave(false);
+  };
+
+  const handleItemMouseLeave = (index) => {
+    setItemLeave(index);
+    setItemEnter(false);
+  };
+
+  function Button() {
+    return (
+      <button className={`${styles.btn} ${styles['btn-101']} ${styles['btn-glow']}`}>
+        {selectedItem}
+      </button>
+    );
+  }
+
+  // function Item() {
+  //   return (
+  //     <li className={styles['dropdown-item']}>
+
+  //     </li>
+  //   )
+  // }
+
 
   return (
     <div
@@ -31,28 +63,20 @@ const Dropdown =  ({ jsonFileName }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button>{selectedItem}</button>
+      <Button label="Select Connection">{selectedItem}</Button>
       {showDropdown && (
-        <ul
-          style={{
-            position: "absolute",
-            top: "100%",
-            left: 0,
-            backgroundColor: "#0d1117",
-            color: "white",
-            listStyle: "none",
-            padding: 0,
-            margin: 0,
-            zIndex: 1,
-            cursor: "pointer",
-          }}
-        >
+        <ul className={styles.ul}>
           {Object.entries(myConnectionStrings).map(([key, value], index) => (
-            <li key={index} onClick={() => handleItemClick(key)}>
+            <li
+              key={index}
+              onClick={() => handleItemClick(key)}
+              onMouseEnter={() => setHoveredItem(index)}
+              onMouseLeave={() => setHoveredItem(null)}
+              className={hoveredItem === index ? "hovered" : ""}
+            >
               {key}
             </li>
           ))}
-
         </ul>
       )}
     </div>

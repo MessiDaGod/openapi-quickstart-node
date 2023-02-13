@@ -34,6 +34,11 @@ export default function Home() {
   return (
     <div>
       <Head>
+      <style>{`
+          :root {
+            --bg-color: #0d1117;
+          }
+        `}</style>
         <title>OpenAI Quickstart</title>
         <link rel="icon" href="/dog.png" />
       </Head>

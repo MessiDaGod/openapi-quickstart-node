@@ -20,6 +20,21 @@ function OpenApi() {
     "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
   };
 
+  const executeCode = async (code) => {
+    try {
+      const response = await fetch(API_ENDPOINT, {
+        method: "POST",
+        body: JSON.stringify({ code }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setResponse(JSON.stringify(data, null, 2));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   async function onGetInput(event) {
     event.preventDefault();
@@ -116,7 +131,7 @@ function OpenApi() {
       <br />
       <Dropdown />
       <br />
-      <CodeEditor />
+      <CodeEditor onExecute={() => executeCode(code)} />
     </main>
   );
 }
