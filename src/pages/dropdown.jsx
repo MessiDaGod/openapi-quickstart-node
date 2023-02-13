@@ -11,7 +11,7 @@ const Dropdown =  ({ jsonFileName }) => {
 
   useEffect(() => {
     // Fetch the JSON data from an API or a local file
-    fetch('/data.json')
+    fetch(`${jsonFileName}.json`)
       .then((response) => response.json())
       .then((data) => {
         // Get the ConnectionStrings object from the JSON data

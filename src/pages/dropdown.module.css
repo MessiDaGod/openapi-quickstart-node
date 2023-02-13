@@ -120,7 +120,7 @@
   border: "solid 1px #d42496";
 }
 
-li.hovered {
+li.dropdown-item {
   background-color: #7ef633;
   color: black;
 }

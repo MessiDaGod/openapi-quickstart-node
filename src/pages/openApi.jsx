@@ -129,7 +129,7 @@ function OpenApi() {
         />
       </form>
       <br />
-      <Dropdown />
+      <Dropdown jsonFileName="data" />
       <br />
       <CodeEditor onExecute={() => executeCode(code)} />
     </main>
