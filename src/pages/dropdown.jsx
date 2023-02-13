@@ -47,15 +47,6 @@ const Dropdown =  ({ jsonFileName }) => {
     );
   }
 
-  // function Item() {
-  //   return (
-  //     <li className={styles['dropdown-item']}>
-
-  //     </li>
-  //   )
-  // }
-
-
   return (
     <div
       className={"dropdown rz-dropdown"}
@@ -72,7 +63,7 @@ const Dropdown =  ({ jsonFileName }) => {
               onClick={() => handleItemClick(key)}
               onMouseEnter={() => setHoveredItem(index)}
               onMouseLeave={() => setHoveredItem(null)}
-              className={hoveredItem === index ? "dropdown-item hovered" : "dropdown-item"}
+              className={hoveredItem === index ? `${styles['dropdown-item']} ${styles.hovered}` : `${styles['dropdown-item']}`}
             >
               {key}
             </li>
