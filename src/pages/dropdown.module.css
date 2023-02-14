@@ -9,7 +9,6 @@
 }
 .btn-101 {
   -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: button;
   background-color: #000;
   background-image: none;
   color: #fff;
@@ -20,7 +19,6 @@
   font-weight: 900;
   line-height: 1.5;
   margin: 0;
-  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
   padding: 0;
   text-transform: uppercase;
 }
