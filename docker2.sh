@@ -1,0 +1,1 @@
+docker run -d messidagod 1433:1433 --name messidagod
